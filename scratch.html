@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>functional dom</title>
+    <style>
+      .plum {
+        color: plum
+      }
+    </style>
+  </head>
+  <body>
+    <button id="element">plumify</button>
+    <script type="module" crossorigin="anonymous">
+      const $ = (strs, ...vars) => {
+        let selector = ''
+
+        for (let i = 0; i < strs.length; i++) {
+          selector += strs[i]
+
+          if (i + 1 < strs.length) {
+            selector += CSS.escape(vars[i])
+          }
+        }
+
+        return [...document.querySelectorAll(selector)]
+      }
+
+      const pipify = (fn) => (list) => {
+        if (list instanceof Event) {
+          fn(list.currentTarget)
+        } else if (list instanceof Element) {
+          fn(list)
+        } else {
+          for (const element of list) {
+            fn(element)
+          }
+        }
+
+        return list
+      }
+
+      const on = (type, listener) => pipify((element) => element.addEventListener(type, listener))
+
+      const addClass = (value) => pipify((element) => element.classList.add(value))
+
+      $`#element` |> on('click', (e) => e |> addClass('plum'))
+    </script>
+  </body>
+</html>

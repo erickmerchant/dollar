@@ -1,0 +1,23 @@
+{
+  "name": "@erickmerchant/dollar",
+  "version": "1.0.0",
+  "description": "functional dom",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erickmerchant/dollar.git"
+  },
+  "author": "Erick Merchant <erickmerchant@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erickmerchant/dollar/issues"
+  },
+  "homepage": "https://github.com/erickmerchant/dollar#readme",
+  "dependencies": {
+    "@babel/plugin-proposal-pipeline-operator": "^7.5.0",
+    "@erickmerchant/dev-cli": "^8.7.2"
+  }
+}
