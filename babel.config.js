@@ -1,3 +1,5 @@
+// require('babel-eslint')
+
 module.exports = {
   "plugins": [
     [

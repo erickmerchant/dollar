@@ -4,7 +4,7 @@
     <title>functional dom</title>
     <style>
       .plum {
-        color: plum
+        color: plum;
       }
     </style>
   </head>
@@ -43,6 +43,7 @@
 
       const addClass = (value) => pipify((element) => element.classList.add(value))
 
+      /* eslint-disable no-unused-expressions */
       $`#element` |> on('click', (e) => e |> addClass('plum'))
     </script>
   </body>
