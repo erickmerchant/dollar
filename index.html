@@ -25,7 +25,7 @@
         return [...document.querySelectorAll(selector)]
       }
 
-      const pipify = (fn) => (list) => {
+      const pipeify = (fn) => (list) => {
         if (list instanceof Event) {
           fn(list.currentTarget)
         } else if (list instanceof Element) {
@@ -39,9 +39,9 @@
         return list
       }
 
-      const on = (type, listener) => pipify((element) => element.addEventListener(type, listener))
+      const on = (type, listener) => ((element) => element.addEventListener(type, listener)) |> pipeify
 
-      const addClass = (value) => pipify((element) => element.classList.add(value))
+      const addClass = (value) => ((element) => element.classList.add(value)) |> pipeify
 
       /* eslint-disable no-unused-expressions */
       $`#element` |> on('click', (e) => e |> addClass('plum'))

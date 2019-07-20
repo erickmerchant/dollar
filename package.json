@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "lint scratch.html",
-    "start": "dev serve ."
+    "start": "dev serve . --dev"
   },
   "repository": {
     "type": "git",
