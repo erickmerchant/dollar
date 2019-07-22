@@ -1,7 +1,7 @@
 {
   "name": "@erickmerchant/dollar",
   "version": "1.0.0",
-  "description": "functional dom",
+  "description": "a dom utility library of the future",
   "main": "index.js",
   "scripts": {
     "test": "lint scratch.html",
