@@ -19,7 +19,7 @@
   "homepage": "https://github.com/erickmerchant/dollar#readme",
   "dependencies": {
     "@babel/plugin-proposal-pipeline-operator": "^7.5.0",
-    "@erickmerchant/dev-cli": "^8.7.2",
+    "@erickmerchant/dev-cli": "^8.8.0",
     "babel-eslint": "^10.0.2"
   },
   "devDependencies": {
