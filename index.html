@@ -3,48 +3,25 @@
   <head>
     <title>@erickmerchant/dollar</title>
     <style>
-      .plum {
-        color: plum;
+      .dodgerblue {
+        background-color: dodgerblue;
       }
     </style>
   </head>
   <body>
-    <button id="element">plumify</button>
+    <button class="add-dodgerblue">add dodgerblue</button>
+    <button class="toggle-dodgerblue">toggle dodgerblue</button>
+    <button class="remove-dodgerblue">remove dodgerblue</button>
+    <div id="target" style="height: 1em; width: 1em"></div>
     <script type="module" crossorigin="anonymous">
-      const $ = (strs, ...vars) => {
-        let selector = ''
+      import $, {on, toggle, add, remove} from './main.mjs'
 
-        for (let i = 0; i < strs.length; i++) {
-          selector += strs[i]
-
-          if (i + 1 < strs.length) {
-            selector += CSS.escape(vars[i])
-          }
-        }
-
-        return [...document.querySelectorAll(selector)]
-      }
-
-      const pipeify = (fn) => (list) => {
-        if (list instanceof Event) {
-          fn(list.currentTarget)
-        } else if (list instanceof Element) {
-          fn(list)
-        } else {
-          for (const element of list) {
-            fn(element)
-          }
-        }
-
-        return list
-      }
-
-      const on = (type, listener) => ((element) => element.addEventListener(type, listener)) |> pipeify
-
-      const addClass = (value) => ((element) => element.classList.add(value)) |> pipeify
+      const target = $`#target`
 
       /* eslint-disable no-unused-expressions */
-      $`#element` |> on('click', (e) => e |> addClass('plum'))
+      $`.add-dodgerblue` |> on('click', () => target |> add('dodgerblue'))
+      $`.toggle-dodgerblue` |> on('click', () => target |> toggle('dodgerblue'))
+      $`.remove-dodgerblue` |> on('click', () => target |> remove('dodgerblue'))
     </script>
   </body>
 </html>
