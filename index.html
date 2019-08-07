@@ -9,19 +9,19 @@
     </style>
   </head>
   <body>
-    <button class="add-dodgerblue">add dodgerblue</button>
-    <button class="toggle-dodgerblue">toggle dodgerblue</button>
-    <button class="remove-dodgerblue">remove dodgerblue</button>
-    <div id="target" style="height: 1em; width: 1em"></div>
+    <button class="add">add dodgerblue</button>
+    <button class="toggle">toggle dodgerblue</button>
+    <button class="remove">remove dodgerblue</button>
+    <div id="target" style="height: 1em; width: 1em" data-color="dodgerblue"></div>
     <script type="module" crossorigin="anonymous">
       import $, {on, toggle, add, remove} from './main.mjs'
 
       const target = $`#target`
 
       /* eslint-disable no-unused-expressions */
-      $`.add-dodgerblue` |> on('click', () => target |> add('dodgerblue'))
-      $`.toggle-dodgerblue` |> on('click', () => target |> toggle('dodgerblue'))
-      $`.remove-dodgerblue` |> on('click', () => target |> remove('dodgerblue'))
+      $`.add` |> on('click', () => target |> add(target |> data('color')))
+      $`.toggle` |> on('click', () => target |> toggle(target |> data('color')))
+      $`.remove` |> on('click', () => target |> remove(target |> data('color')))
     </script>
   </body>
 </html>

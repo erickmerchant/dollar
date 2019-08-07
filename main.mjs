@@ -9,7 +9,7 @@ export default (strs, ...vars) => {
     }
   }
 
-  return [...document.querySelectorAll(selector)]
+  return document.querySelectorAll(selector)
 }
 
 const pipeify = (fn) => (...args) => (list) => {
@@ -27,11 +27,38 @@ const pipeify = (fn) => (...args) => (list) => {
 }
 
 const methods = {
-  on: (element, ...args) => element.addEventListener(...args),
-  off: (element, ...args) => element.removeEventListener(...args),
-  add: (element, ...args) => element.classList.add(...args),
-  remove: (element, ...args) => element.classList.remove(...args),
-  toggle: (element, ...args) => element.classList.toggle(...args)
+  on: (element, type, listener, options) => element.addEventListener(type, listener, options),
+  off: (element, type, listener, options) => element.removeEventListener(type, listener, options),
+  add: (element, ...names) => element.classList.add(...names),
+  remove: (element, ...names) => element.classList.remove(...names),
+  toggle: (element, name, force) => element.classList.toggle(name, force),
+  data: (element, key, value) => {
+    if (value !== undefined) {
+      element.dataset[key] = value
+    } else if (value == null) {
+      delete element.dataset[key]
+    } else {
+      return element.dataset[key]
+    }
+  },
+  attr: (element, key, value) => {
+    if (value !== undefined) {
+      element.setAttribute(key, value)
+    } else if (value == null) {
+      element.removeAttribute(key)
+    } else {
+      return element.getAttribute(key)
+    }
+  },
+  prop: (element, key, value) => {
+    if (value !== undefined) {
+      element[key] = value
+    } else if (value == null) {
+      delete element[key]
+    } else {
+      return element[key]
+    }
+  }
 }
 
 for (const key of Object.keys(methods)) {
@@ -47,3 +74,9 @@ export const add = methods.add
 export const remove = methods.remove
 
 export const toggle = methods.toggle
+
+export const data = methods.data
+
+export const attr = methods.attr
+
+export const prop = methods.prop
