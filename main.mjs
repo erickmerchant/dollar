@@ -29,7 +29,11 @@ const pipeify = (fn) => (...args) => (list) => {
 const methods = {
   on: (element, type, listener, options) => element.addEventListener(type, listener, options),
   off: (element, type, listener, options) => element.removeEventListener(type, listener, options),
-  add: (element, ...names) => element.classList.add(...names),
+  add: (element, ...names) => {
+    console.log(names)
+
+    element.classList.add(...names)
+  },
   remove: (element, ...names) => element.classList.remove(...names),
   toggle: (element, name, force) => element.classList.toggle(name, force),
   data: (element, key, value) => {
